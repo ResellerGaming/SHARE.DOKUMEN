@@ -1,119 +1,180 @@
+body>
+  </html>
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dokumen Share</title>
+  <title>Reseller Gaming — Share & Download</title>
   <style>
-    body {
+    :root {
+      --bg1: #0f0c29;
+      --bg2: #302b63;
+      --bg3: #24243e;
+      --accent: #00f2fe;
+      --accent2: #4facfe;
+      --glass: rgba(255, 255, 255, 0.05);
+      --radius: 16px;
+    }
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #4b0082, #000);
-      color: white;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: #fff;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
       padding: 2rem 1rem;
     }
     h1 {
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      margin-bottom: 2rem;
+      opacity: 0.7;
+      font-size: 0.95rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .btn-top {
+      position: relative;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(45deg, var(--accent), var(--accent2));
+      box-shadow: 0 8px 20px -6px var(--accent);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px -6px var(--accent);
+    }
+    .btn-top.donate {
+      background: linear-gradient(45deg, #f857a6, #ff5858);
+      box-shadow: 0 8px 20px -6px #ff5858;
+    }
+    .btn-top.donate:hover {
+      box-shadow: 0 12px 25px -6px #ff5858;
+    }
+    .notice {
+      max-width: 600px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
       text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .notice b {
+      color: var(--accent);
+    }
+    .notice span {
+      color: #ff4d4d;
     }
     .link-list {
       width: 100%;
-      max-width: 450px;
+      max-width: 700px;
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
     }
     .card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 1rem;
-      padding: 1rem 1.2rem;
-      transition: background 0.3s;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      transition: background 0.3s, transform 0.2s;
     }
-    .card:hover { background: rgba(255,255,255,0.25); }
+    .card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-4px);
+    }
     .card-title {
-      font-weight: bold;
-      font-size: 1rem;
-      margin: 0 0 0.25rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
     }
     .card-desc {
       font-size: 0.85rem;
-      opacity: 0.85;
-      margin: 0 0 0.75rem;
+      opacity: 0.75;
+      margin-bottom: 1rem;
     }
     .card-actions {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
     .btn {
       flex: 1;
       text-align: center;
-      background: #6d28d9;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      color: white;
+      padding: 0.55rem 0;
+      border-radius: 10px;
       font-size: 0.85rem;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: filter 0.3s;
+      color: #fff;
+      background: var(--accent);
+      transition: filter 0.2s;
     }
-    .btn:hover { filter: brightness(1.1); }
-    .btn.secondary { background: rgba(255,255,255,0.2); }
-    .notice {
-      max-width: 450px;
-      text-align: center;
-      margin: 2rem auto;
-      font-size: 0.9rem;
-      background: rgba(255,255,255,0.1);
-      padding: 1rem;
-      border-radius: 0.75rem;
-      line-height: 1.5;
+    .btn:hover {
+      filter: brightness(1.15);
     }
-    .socials {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .socials a svg {
-      width: 32px;
-      height: 32px;
-      fill: white;
-      transition: transform 0.2s, fill 0.2s;
-    }
-    .socials a:hover svg {
-      transform: scale(1.15);
-      fill: #6d28d9;
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.15);
     }
     footer {
       margin-top: auto;
-      padding: 1rem;
+      padding-top: 2rem;
       font-size: 0.8rem;
-      opacity: 0.7;
-      text-align: center;
+      opacity: 0.5;
     }
   </style>
 </head>
 <body>
-  <h1>📂 Share Dokumen</h1>
-  
-    <!-- Notice -->
-  <div class="notice">
-    Semua Share Code, script dan lain lain dari <b>Reseller Gaming programer</b> di sini semua.  
-    Selain itu <span style="color:#f87171;">SCAM/Penipuan ❌</span>
+
+  <h1>Reseller Gaming</h1>
+  <p class="subtitle">Kumpulan code website & script bot — gratis & aman</p>
+
+  <!-- 3 TOMBOL UTAMA -->
+  <div class="btn-group">
+    <a class="btn-top" href="#website">Code Website by Reseller Gaming</a>
+    <a class="btn-top" href="#bot">Script Bot Telegram & WhatsApp by Reseller Gaming</a>
+    <a class="btn-top donate" href="#donate">Bantu Donate</a>
   </div>
 
+  <!-- Pesan info -->
+  <div class="notice">
+    Semua file di bawah berasal dari <b>Reseller Gaming</b>.  
+    Selain itu <span>SCAM / Penipuan ❌</span>
+  </div>
+
+  <!-- DAFTAR FILE -->
   <div class="link-list">
-    <div class="card">
-      <div class="card-title">Website payment Versi 1 (ZIP)</div>
-      <div class="card-desc">Dokumen yang berisi code HTML + CSS menghasilkan Website payment (versi 1) dan tambahkan ada play music ketika di pencet button "Lanjut Bayar".</div>
+
+    <!-- Website -->
+    <div id="website" class="card">
+      <div class="card-title">Website Payment v1 (ZIP)</div>
+      <div class="card-desc">HTML+CSS, tombol "Lanjut Bayar" dengan lagu. Cocok untuk landing page payment.</div>
       <div class="card-actions">
         <a href="/file/payment-v1(by Reseller Gaming).zip" download class="btn">⬇️ Download</a>
         <button class="btn secondary" onclick="copyLink('/file/payment-v1(by Reseller Gaming).zip')">🔗 Salin Link</button>
@@ -121,8 +182,8 @@
     </div>
 
     <div class="card">
-      <div class="card-title">Website payment Store Versi 1 (ZIP)</div>
-      <div class="card-desc">Dokumen yang berisi beberapa file dan code HTML + CSS + JS menghasilkan website yang keren dan modern.</div>
+      <div class="card-title">Website Store v1 (ZIP)</div>
+      <div class="card-desc">Full pack: HTML+CSS+JS, tampilan modern & responsif.</div>
       <div class="card-actions">
         <a href="/file/Website-StoreV1-ResellerGaming.zip" download class="btn">⬇️ Download</a>
         <button class="btn secondary" onclick="copyLink('/file/Website-StoreV1-ResellerGaming.zip')">🔗 Salin Link</button>
@@ -130,84 +191,65 @@
     </div>
 
     <div class="card">
-      <div class="card-title">Website payment Versi 2 (ZIP)</div>
-      <div class="card-desc">Dokumen yang berisi file dan code HTML + CSS + JS dan digabungkan dalam 1 file, dan menghubungkan Bot Telegram menerima pesan dan foto.</div>
+      <div class="card-title">Website Payment v2 (ZIP)</div>
+      <div class="card-desc">All-in-one file, otomatis kirim data & foto ke Bot Telegram.</div>
       <div class="card-actions">
         <a href="/file/Payment Reseller Gaming (versi 2).zip" download class="btn">⬇️ Download</a>
         <button class="btn secondary" onclick="copyLink('/file/Payment Reseller Gaming (versi 2).zip')">🔗 Salin Link</button>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-      <div class="card-title">Script BOT Telegram limit (ZIP)</div>
-      <div class="card-desc">Script berisi file dengan bahasa JS dan JSON dan script ini adalah script bot telegram berjenis Limit cocok seseorang yang ingin chat kamu tapi dia limit.</div>
+    <!-- Bot -->
+    <div id="bot" class="card">
+      <div class="card-title">Bot Telegram Limit v1 (ZIP)</div>
+      <div class="card-desc">Bot limit-chat: JS + JSON, otomatis blokir user yang spam.</div>
       <div class="card-actions">
         <a href="/file/BOT limit V1.zip" download class="btn">⬇️ Download</a>
-        <button class="btn secondary" onclick="copyLink('/file/BOT limit V1.zip)">🔗 Salin Link</button>
+        <button class="btn secondary" onclick="copyLink('/file/BOT limit V1.zip')">🔗 Salin Link</button>
       </div>
     </div>
-</div>
 
-<div class="card">
-      <div class="card-title">Website Doxing (ZIP)</div>
-      <div class="card-desc">Dokumen Yang berisi code HTML + CSS + JS, yang menghasilkan website Doxing untuk mengecek Data suatu NIK seseorang website ini dilarang salah gunakan dan terimakasih 🙏😊</div>
-      <div class="card-actions">
-        <a href="/file/Doxing.zip" download class="btn">⬇️ Download</a>
-        <button class="btn secondary" onclick="copyLink('/file/Doxing.zip)">🔗 Salin Link</button>
-      </div>
-    </div>
-</div>
-
-<div class="card">
-      <div class="card-title">Script JASSEB RESELLER GAMING V1 (ZIP)</div>
-      <div class="card-desc">Script Bot telegram untuk share teks keseluruhan grub yang berada pada bot tersebut dan bot share denggan mudah dan cepat</div>
+    <div class="card">
+      <div class="card-title">Script JASSEB RG v1 (ZIP)</div>
+      <div class="card-desc">Broadcast pesan ke semua grup yang ada di bot—cepat & mudah.</div>
       <div class="card-actions">
         <a href="/file/JASSEB RESELLER GAMING V1.zip" download class="btn">⬇️ Download</a>
-        <button class="btn secondary" onclick="copyLink('/file/JASSEB RESELLER GAMING V1.zip)">🔗 Salin Link</button>
+        <button class="btn secondary" onclick="copyLink('/file/JASSEB RESELLER GAMING V1.zip')">🔗 Salin Link</button>
       </div>
     </div>
-</div>
 
-<div class="card">
-      <div class="card-title">Script BOT Telegram limit V2 (ZIP)</div>
-      <div class="card-desc">Script berisi file dengan bahasa JS dan JSON dan script ini adalah script bot telegram berjenis Limit cocok seseorang yang ingin chat kamu tapi dia limit.</div>
+    <!-- Lainnya -->
+    <div class="card">
+      <div class="card-title">Website Doxing (ZIP)</div>
+      <div class="card-desc">Cek NIK (contoh demo). <b>Jangan disalahgunakan!</b></div>
       <div class="card-actions">
-        <a href="/file/BOT LIMIT V2 RESELLER GAMING.zip" download class="btn">⬇️ Download</a>
-        <button class="btn secondary" onclick="copyLink('/file/BOT LIMIT V2 RESELLER GAMING.zip)">🔗 Salin Link</button>
+        <a href="/file/Doxing.zip" download class="btn">⬇️ Download</a>
+        <button class="btn secondary" onclick="copyLink('/file/Doxing.zip')">🔗 Salin Link</button>
       </div>
     </div>
-</div>
-  
 
-  <!-- Social Media -->
-  <div class="socials">
-    <a href="https://whatsapp.com/channel/0029VbAt2GM7j6g6d13Xx01X" target="_blank" title="WhatsApp">
-      <svg viewBox="0 0 32 32"><path d="M16.001 3.2c-7.083 0-12.8 5.717-12.8 12.8 0 2.254.587 4.447 1.707 6.389l-1.813 6.613 6.747-1.771a12.75 12.75 0 006.159 1.568c7.083 0 12.8-5.717 12.8-12.8s-5.717-12.8-12.8-12.8zm0 23.467a10.63 10.63 0 01-5.417-1.496l-.387-.23-4.005 1.052 1.07-3.91-.252-.402a10.55 10.55 0 01-1.65-5.581c0-5.847 4.753-10.6 10.6-10.6 5.847 0 10.6 4.753 10.6 10.6 0 5.846-4.753 10.6-10.6 10.6zm5.78-7.92c-.316-.158-1.87-.92-2.161-1.026-.29-.106-.502-.158-.714.158-.211.316-.816 1.026-1.002 1.238-.185.211-.369.238-.685.079-.316-.158-1.334-.492-2.543-1.57-.94-.839-1.574-1.874-1.76-2.19-.185-.316-.019-.487.14-.645.144-.144.316-.369.474-.554.158-.185.211-.316.316-.528.105-.211.053-.396-.026-.554-.079-.158-.714-1.73-.979-2.366-.258-.62-.52-.537-.714-.546l-.61-.011c-.211 0-.554.079-.844.396-.29.316-1.107 1.082-1.107 2.639 0 1.556 1.134 3.061 1.292 3.277.158.211 2.231 3.414 5.405 4.784.756.326 1.345.52 1.805.667.757.24 1.445.206 1.988.125.607-.091 1.87-.764 2.134-1.503.264-.739.264-1.37.185-1.503-.079-.132-.29-.211-.606-.369z"/></svg>
-    </a>
-    <a href="https://t.me/ResellerGamingoffcial" target="_blank" title="Telegram">
-      <svg viewBox="0 0 24 24"><path d="M9.93 16.91L9.82 20.68c.45 0 .64-.19.88-.41l2.12-2.01 4.4 3.22c.81.45 1.38.21 1.59-.75l2.89-13.56h.01c.25-1.16-.42-1.61-1.2-1.33L3.87 10.37c-1.15.45-1.13 1.09-.2 1.38l4.65 1.45 10.8-6.81c.51-.33.97-.15.59.18"/></svg>
-    </a>
-    <a href="https://x.com/me_ahmadi_?t=5j080LbxWHbdFgzZwmdHSQ&s=09" target="_blank" title="X">
-      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.37l-5.214-6.82-5.97 6.82H1.878l7.73-8.828L1.5 2.25h6.92l4.713 6.206L18.244 2.25z"/></svg>
-    </a>
-    <a href="https://www.instagram.com/my_m.ahmadi?igsh=MTJyendvczFvOHVjeQ==" target="_blank" title="Instagram">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.262 2.242 1.325 3.608.058 1.266.069 1.646.069 4.85s-.011 3.584-.069 4.85c-.063 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.262-3.608 1.325-1.266.058-1.646.069-4.85.069s-3.584-.011-4.85-.069c-1.366-.063-2.633-.35-3.608-1.325-.975-.975-1.262-2.242-1.325-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.325-3.608.975-.975 2.242-1.262 3.608-1.325C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.155 0-3.517.012-4.75.069-1.025.047-1.58.216-1.948.362-.49.19-.84.418-1.207.785-.367.367-.595.717-.785 1.207-.146.368-.315.923-.362 1.948-.057 1.233-.069 1.595-.069 4.75s.012 3.517.069 4.75c.047 1.025.216 1.58.362 1.948.19.49.418.84.785 1.207.367.367.717.595 1.207.785.368.146.923.315 1.948.362 1.233.057 1.595.069 4.75.069s3.517-.012 4.75-.069c1.025-.047 1.58-.216 1.948-.362.49-.19.84-.418.785-1.207.367-.367.595-.717.785-1.207.146-.368.315-.923.362-1.948.057-1.233.069-1.595.069-4.75s-.012-3.517-.069-4.75c-.047-1.025-.216-1.58-.362-1.948-.19-.49-.418-.84-.785-1.207-.367-.367-.717-.595-1.207-.785-.368-.146-.923-.315-1.948-.362-1.233-.057-1.595-.069-4.75-.069zm0 3.905a5.932 5.932 0 100 11.864 5.932 5.932 0 000-11.864zm0 9.79a3.857 3.857 0 110-7.715 3.857 3.857 0 010 7.715zm6.406-10.845a1.386 1.386 0 11-2.772 0 1.386 1.386 0 012.772 0z"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@reseller_gaming?_t=ZS-8zJ7VMImDiB&_r=1" target="_blank" title="TikTok">
-      <svg viewBox="0 0 48 48"><path d="M31.25 2h-6.72v29.66a5.3 5.3 0 11-5.3-5.3c.43 0 .85.06 1.25.17V19.8a11.93 11.93 0 00-1.25-.07c-6.67 0-12.07 5.4-12.07 12.07 0 6.67 5.4 12.07 12.07 12.07 6.67 0 12.07-5.4 12.07-12.07V17.24a15.56 15.56 0 006.72 1.54V12.06a9 9 0 01-6.72-3.28V2z"/></svg>
-    </a>
+  </div><!-- /link-list -->
+
+  <!-- DONASI (opsional, bisa tautkan ke Saweria, dsb) -->
+  <div id="donate" style="margin-top:3rem;text-align:center;">
+    <p class="subtitle">☕ Dukung  saya agar tetap update dan semangat</p>
+    <a class="btn-top donate" href="https://donate.resellergaming.my.id/#donasi" target="_blank">Lanjut Donate</a>
   </div>
 
-  <footer>© 2025 DokumenShare</footer>
+  <footer>© <span id="yr"></span> Reseller Gaming — DokumenShare</footer>
 
   <script>
-    function copyLink(url) {
-      const fullUrl = location.origin + "/" + url;
-      navigator.clipboard.writeText(fullUrl)
-        .then(() => alert("Link disalin ke clipboard!"))
-        .catch(() => prompt("Salin link manual:", fullUrl));
+    // tahun otomatis
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // salin link ke clipboard
+    function copyLink(path) {
+      const url = location.origin + path;
+      navigator.clipboard.writeText(url)
+        .then(() => alert("Link tersalin ke clipboard!"))
+        .catch(() => prompt("Salin manual: ", url));
     }
   </script>
+
 </body>
-  </html>
+        </html>
